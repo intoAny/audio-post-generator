@@ -412,11 +412,36 @@ document.getElementById('output').textContent = html;
 
 function copyHTML(){
 
-navigator.clipboard.writeText(
-document.getElementById('output').textContent
-);
 
-alert('Copied!');
+    const textIs = document.getElementById('output').textContent
+
+    if(navigator.clipboard){
+
+        navigator.clipboard.writeText(textIs)
+
+        .then(()=>{
+
+            alert("Template Copied!");
+        });
+
+    }else{
+
+        const textarea = document.createElement('textarea');
+
+        textarea.value = textIs;
+
+        document.body.appendChild(textarea);
+
+        textarea.select();
+
+        document.execCommand('copy');
+
+        document.body.removeChild(textarea);
+
+        windows.alert("Template Copied!");
+        
+    }
+
 
 }
 

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ByteHeim Music Post Generator</title>
+
+<style>
+
+body{
+background:#f5f5f7;
+font-family:Arial,sans-serif;
+padding:30px;
+margin:0;
+color:#111;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:25px;
+}
+
+.panel{
+background:#fff;
+padding:25px;
+border-radius:24px;
+box-shadow:0 6px 24px rgba(0,0,0,0.08);
+}
+
+input,textarea{
+width:100%;
+padding:14px;
+border-radius:14px;
+border:1px solid #ddd;
+margin-top:8px;
+margin-bottom:18px;
+font-size:14px;
+box-sizing:border-box;
+}
+
+textarea{
+min-height:120px;
+resize:vertical;
+}
+
+button{
+background:#9006ba;
+color:#fff;
+border:none;
+padding:14px 22px;
+border-radius:16px;
+cursor:pointer;
+font-size:15px;
+margin-right:10px;
+}
+
+.output{
+background:#111;
+color:#00ff90;
+padding:20px;
+border-radius:18px;
+white-space:pre-wrap;
+overflow:auto;
+max-height:800px;
+font-size:13px;
+}
+
+@media(max-width:900px){
+
+.container{
+grid-template-columns:1fr;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="panel">
+
+<h1>ByteHeim Music Post Generator</h1>
+
+<input id="title" placeholder="Song / Album Title">
+
+<input id="artist" placeholder="Artist Name">
+
+<input id="image" placeholder="Paste Blogger Image URL">
+
+<input id="genre" placeholder="Genre">
+
+<input id="release" placeholder="Release Date">
+
+<input id="duration" placeholder="Duration">
+
+<input id="studio" placeholder="Studio / Label">
+
+<textarea id="intro" placeholder="Short Introduction"></textarea>
+
+<textarea id="about" placeholder="About The Music"></textarea>
+
+<input id="youtube" placeholder="Paste YouTube Embed URL">
+
+<input id="download" placeholder="Paste MP3 Download Link">
+
+<button onclick="generateHTML()">
+Generate HTML
+</button>
+
+<button onclick="copyHTML()">
+Copy HTML
+</button>
+
+</div>
+
+<div class="panel">
+
+<h2>Generated HTML</h2>
+
+<div class="output" id="output"></div>
+
+</div>
+
+</div>
+
+<script>
+
+function generateHTML(){
+
+const title=document.getElementById('title').value;
+const artist=document.getElementById('artist').value;
+const image=document.getElementById('image').value;
+const genre=document.getElementById('genre').value;
+const release=document.getElementById('release').value;
+const duration=document.getElementById('duration').value;
+const studio=document.getElementById('studio').value;
+const intro=document.getElementById('intro').value;
+const about=document.getElementById('about').value;
+const youtube=document.getElementById('youtube').value;
+const download=document.getElementById('download').value;
+
+const html = `
+
+<div style="max-width:1100px;margin:auto;font-family:Arial,sans-serif;color:#111;line-height:1.7;">
+
+<div style="background:#fff;border-radius:28px;padding:28px;margin-bottom:24px;box-shadow:0 8px 30px rgba(0,0,0,0.08);">
+
+<div style="display:flex;gap:24px;flex-wrap:wrap;align-items:flex-start;">
+
+<img src="${image}"
+style="width:320px;border-radius:22px;box-shadow:0 10px 30px rgba(0,0,0,0.18);">
+
+<div style="flex:1;min-width:280px;">
+
+<h1 style="font-size:42px;margin-bottom:10px;color:#111;">
+${title}
+</h1>
+
+<h2 style="font-size:24px;color:#9006ba;margin-bottom:16px;">
+${artist}
+</h2>
+
+<p style="color:#333;line-height:1.7;margin-bottom:14px;">
+${intro}
+</p>
+
+<div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:18px;">
+
+<span style="background:#f2f2f2;padding:10px 16px;border-radius:14px;">
+${genre}
+</span>
+
+<span style="background:#f2f2f2;padding:10px 16px;border-radius:14px;">
+${release}
+</span>
+
+<span style="background:#f2f2f2;padding:10px 16px;border-radius:14px;">
+${duration}
+</span>
+
+</div>
+
+<div style="margin-top:28px;">
+
+<a href="${download}"
+download
+style="
+display:inline-flex;
+align-items:center;
+gap:10px;
+padding:16px 26px;
+background:linear-gradient(135deg,#9006ba,#ff4fd8);
+color:#fff;
+font-size:16px;
+font-weight:bold;
+border-radius:18px;
+text-decoration:none;
+box-shadow:0 10px 30px rgba(144,6,186,0.35);
+transition:0.35s ease;
+animation:floatButton 3s ease-in-out infinite;
+">
+
+⬇ Download MP3
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div style="background:#fff;border-radius:24px;padding:24px;margin-bottom:24px;box-shadow:0 6px 24px rgba(0,0,0,0.06);">
+
+<h2 style="font-size:30px;margin-bottom:18px;color:#111;">
+Quick Information
+</h2>
+
+<table style="width:100%;border-collapse:collapse;color:#222;">
+
+<tr>
+
+<td style="padding:12px;border-bottom:1px solid #eee;font-weight:bold;width:220px;">
+Artist
+</td>
+
+<td style="padding:12px;border-bottom:1px solid #eee;">
+${artist}
+</td>
+
+</tr>
+
+<tr>
+
+<td style="padding:12px;border-bottom:1px solid #eee;font-weight:bold;">
+Genre
+</td>
+
+<td style="padding:12px;border-bottom:1px solid #eee;">
+${genre}
+</td>
+
+</tr>
+
+<tr>
+
+<td style="padding:12px;border-bottom:1px solid #eee;font-weight:bold;">
+Release Date
+</td>
+
+<td style="padding:12px;border-bottom:1px solid #eee;">
+${release}
+</td>
+
+</tr>
+
+<tr>
+
+<td style="padding:12px;border-bottom:1px solid #eee;font-weight:bold;">
+Duration
+</td>
+
+<td style="padding:12px;border-bottom:1px solid #eee;">
+${duration}
+</td>
+
+</tr>
+
+<tr>
+
+<td style="padding:12px;font-weight:bold;">
+Studio / Label
+</td>
+
+<td style="padding:12px;">
+${studio}
+</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<div style="background:#fff;border-radius:24px;padding:24px;margin-bottom:24px;box-shadow:0 6px 24px rgba(0,0,0,0.06);">
+
+<h2 style="font-size:30px;margin-bottom:18px;color:#111;">
+About The Music
+</h2>
+
+<p style="color:#222;line-height:1.7;">
+${about}
+</p>
+
+</div>
+
+<div style="
+position:relative;
+width:100%;
+padding-top:56.25%;
+border-radius:18px;
+overflow:hidden;
+box-shadow:0 8px 24px rgba(0,0,0,0.12);
+">
+
+<iframe
+src="${youtube}"
+frameborder="0"
+allowfullscreen
+style="
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+border:none;
+border-radius:18px;
+">
+</iframe>
+
+</div>
+
+<style>
+
+@keyframes floatButton{
+
+0%{
+transform:translateY(0px);
+}
+
+50%{
+transform:translateY(-6px);
+}
+
+100%{
+transform:translateY(0px);
+}
+
+}
+
+a:hover{
+transform:scale(1.05);
+box-shadow:0 14px 40px rgba(255,79,216,0.45);
+}
+
+</style>
+
+`;
+
+document.getElementById('output').textContent = html;
+
+}
+
+function copyHTML(){
+
+navigator.clipboard.writeText(
+document.getElementById('output').textContent
+);
+
+alert('Copied!');
+
+}
+
+</script>
+
+</body>
+
+</html>

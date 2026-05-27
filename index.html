@@ -5,8 +5,45 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="INTOANY™">
+<meta name="application-name" content="Music Post Generator for Blogger - Create engaging music blog posts with our free generator with SEO optimization, customizable templates, and easy copy features.">
+<meta name="description" content="Discover the latest music releases, anime OSTs, downloadable MP3 songs, artist updates, soundtracks, and music blog posts with modern streaming and download experiences on ByteHeim.">
+<meta name="keywords" content="music post generator, blogger tools, anime post generator, free blogger generator, INTOANY, ByteHeim">
+<meta name="robots" content="index, follow">
+<meta name="googlebot" content="index, follow">
+<meta name="bingbot" content="index, follow">
 
-<title>ByteHeim Music Post Generator</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="mobile-web-app-capable" content="yes">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<meta property="og:title" content="Free Blog Post Generator">
+<meta property="og:description" content="Discover the latest music releases, anime OSTs, downloadable MP3 songs, artist updates, soundtracks, and music blog posts with modern streaming and download experiences on ByteHeim.">
+<meta property="og:image" content="music-blog.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://audio.post.intoany.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="IntoAny">
+<meta property="og:locale" content="en_US">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="Referrer-Policy" content="strict-origin">
+<meta name="copyright" content="INTOANY™">
+<meta name="reply-to" content="intoany@vk.com">
+
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="Referrer-Policy" content="strict-origin">
+
+<link rel="canonical" href="https://audio.post.intoany.com/">
+
+<meta name="theme-color" content="#9006ba">
+
+<link rel="icon" href="intoany.png" type="image/x-icon">
+
+
+
+<title>IntoAny | Music Post Generator</title>
 
 <style>
 
@@ -137,17 +174,27 @@ Copy HTML
 
 function generateHTML(){
 
-const title=document.getElementById('title').value;
-const artist=document.getElementById('artist').value;
-const image=document.getElementById('image').value;
-const genre=document.getElementById('genre').value;
-const release=document.getElementById('release').value;
-const duration=document.getElementById('duration').value;
-const studio=document.getElementById('studio').value;
-const intro=document.getElementById('intro').value;
-const about=document.getElementById('about').value;
-const youtube=document.getElementById('youtube').value;
-const download=document.getElementById('download').value;
+
+
+    const title=document.getElementById('title').value;
+    const artist=document.getElementById('artist').value;
+    const image=document.getElementById('image').value;
+    const genre=document.getElementById('genre').value;
+    const release=document.getElementById('release').value;
+    const duration=document.getElementById('duration').value;
+    const studio=document.getElementById('studio').value;
+    const intro=document.getElementById('intro').value;
+    const about=document.getElementById('about').value;
+    const youtube=document.getElementById('youtube').value;
+    const download=document.getElementById('download').value;
+
+    const allFields = document.querySelectorAll('input, textarea');
+    const emptyFields = [...allFields].some((fields)=>fields.value.trim() === "");
+    const message = emptyFields ? "Please fill in all fields before generating the Music Blog Post." : "";
+    if(emptyFields){
+        alert(message);
+        return;
+    }
 
 const html = `
 

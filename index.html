@@ -117,6 +117,19 @@ border-radius:16px;
 cursor:pointer;
 font-size:15px;
 margin-right:10px;
+transition:transform 0.2s ease, opacity 0.2s ease;
+}
+
+.button-row{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+margin-top:6px;
+}
+
+.button-row button{
+flex:1 1 160px;
+margin-right:0;
 }
 
 .output{
@@ -136,6 +149,26 @@ font-size:13px;
 grid-template-columns:1fr;
 }
 
+}
+
+@media(max-width:411px){
+body{
+padding:14px;
+}
+
+.panel{
+padding:18px;
+border-radius:18px;
+}
+
+.button-row{
+flex-direction:column;
+}
+
+.button-row button{
+width:100%;
+flex-basis:100%;
+}
 }
 
 </style>
@@ -172,6 +205,7 @@ grid-template-columns:1fr;
 
 <input id="download" placeholder="Paste MP3 Download Link">
 
+<div class="button-row">
 <button onclick="generateHTML()">
 Generate HTML
 </button>
@@ -179,6 +213,7 @@ Generate HTML
 <button onclick="copyHTML()">
 Copy HTML
 </button>
+</div>
 
 </div>
 

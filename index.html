@@ -170,6 +170,55 @@ width:100%;
 flex-basis:100%;
 }
 }
+.footer-bar{background:rgba(11,23,54,.75);color:#f7f9ff;border-radius:20px;padding:18px 20px;margin-top:20px;border:1px solid rgba(217, 74, 227, 0.18);box-shadow:0 12px 30px rgba(0,0,0,.25);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);position:relative;overflow:hidden;animation:bounceFooter 2.4s ease-in-out infinite}
+.footer-bar::before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,rgba(208, 80, 236, 0.34),transparent 80%,rgba(83, 205, 235, 0.41));pointer-events:none}
+.footer-content{
+display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    gap:70px;
+    flex-wrap:wrap;
+}
+.footer-section{width:180px; display:block;}
+.footer-section h4{margin:0 0 6px;font-size:15px;letter-spacing:.04em;text-transform:uppercase;color:#8fd3ff}
+.footer-section a{display:block;color:#f7f9ff;text-decoration:none;font-weight:500;padding:2px 0;transition:color .2s ease,transform .2s ease}
+.footer-section a:hover{color:#ff9800;transform:translateX(2px)}
+.copyright{
+    margin-top:25px;
+    padding-top:20px;
+    border-top:1px solid rgba(52, 109, 124, 0.15);
+    text-align:center;
+    font-size:13px;
+    line-height:1.7;
+    color:white;
+}
+@keyframes bounceFooter{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@media(max-width:680px){
+
+.footer-content{
+    flex-direction:column;
+    gap:25px;
+
+    align-items:center;
+}
+
+.footer-section{
+    width:100%;
+    
+
+}
+
+.copyright{
+    text-align:center;
+}
+.footer-section a {
+    text-align:center;
+}
+.footer-section h4{
+    text-align:center;
+}
+
+}
 
 </style>
 
@@ -201,8 +250,6 @@ flex-basis:100%;
 
 <textarea id="about" placeholder="About The Music"></textarea>
 
-<input id="youtube" placeholder="Paste YouTube Embed URL">
-
 <input id="download" placeholder="Paste MP3 Download Link">
 
 <div class="button-row">
@@ -226,6 +273,31 @@ Copy HTML
 </div>
 
 </div>
+<footer class="footer-bar">
+<div class="footer-content">
+<div class="footer-section">
+<h4>Follow Us</h4>
+<a href="https://www.instagram.com/byteheim/" target="_blank" rel="noopener">Instagram</a>
+<a href="https://www.facebook.com/@byteheimr/" target="_blank" rel="noopener">Facebook</a>
+<a href="https://www.youtube.com/@byteheim" target="_blank" rel="noopener">YouTube</a>
+<a href="https://t.me/@byteheim" target="_blank" rel="noopener">Telegram</a>
+<a href="https://vk.com/intoany" target="_blank" rel="noopener">VK</a>
+</div>
+<div class="footer-section">
+<h4>Blog</h4>
+<a href="https://bg.byteheim.fyi/" target="_blank" rel="noopener">Visit our blog↗️</a>
+<a href="https://bg.byteheim.fyi/p/privacypolicy.html">Privacy Policy</a>
+<a href="https://bg.byteheim.fyi/p/about.html">About</a>
+<a href="https://bg.byteheim.fyi/p/contact.html">Contact</a>
+</div>
+<div class="footer-section">
+    <h4>Dev</h4>
+    <a href="https://www.intoany.com">IntoAny™</a>
+    <a href="https://www.byteheim.fyi">ByteHeim</a>
+</div>
+<div class="copyright">© 2026 All Rights Reserved IntoAny™</div>
+</div>
+</footer>
 
 <script>
 
@@ -242,7 +314,6 @@ function generateHTML(){
     const studio=document.getElementById('studio').value;
     const intro=document.getElementById('intro').value;
     const about=document.getElementById('about').value;
-    const youtube=document.getElementById('youtube').value;
     const download=document.getElementById('download').value;
 
     const allFields = document.querySelectorAll('input, textarea');
@@ -410,32 +481,6 @@ ${about}
 
 </div>
 
-<div style="
-position:relative;
-width:100%;
-padding-top:56.25%;
-border-radius:18px;
-overflow:hidden;
-box-shadow:0 8px 24px rgba(0,0,0,0.12);
-">
-
-<iframe
-src="${youtube}"
-frameborder="0"
-allowfullscreen
-style="
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100%;
-border:none;
-border-radius:18px;
-">
-</iframe>
-
-</div>
-
 <style>
 
 @keyframes floatButton{
@@ -495,7 +540,7 @@ function copyHTML(){
 
         document.body.removeChild(textarea);
 
-        windows.alert("Template Copied!");
+        alert("Template Copied!");
         
     }
 

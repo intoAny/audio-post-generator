@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Anime Blogger Generator</title>
+<style>
+body{font-family:Arial,sans-serif;background:#f4f4f8;padding:20px}
+.container{max-width:1200px;margin:auto}
+.card{background:#fff;border-radius:20px;padding:20px;box-shadow:0 6px 24px rgba(0,0,0,.08);margin-bottom:20px}
+input,textarea{width:100%;padding:10px;margin:8px 0;border:1px solid #ddd;border-radius:10px}
+textarea{min-height:120px}
+button{padding:12px 18px;border:none;border-radius:10px;background:#6c3cf0;color:#fff;cursor:pointer;margin-right:8px}
+#output{min-height:300px}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="card">
+<h2>Anime Blogger Generator</h2>
+
+<input id="title" placeholder="Anime Title">
+<input id="image" placeholder="Featured Image URL">
+<input id="release" placeholder="Release Date">
+<input id="jp" placeholder="Japanese Title">
+<input id="genre" placeholder="Genre">
+<input id="studio" placeholder="Studio">
+<input id="status" placeholder="Status">
+
+<textarea id="intro" placeholder="Featured Introduction"></textarea>
+<textarea id="story" placeholder="Story Overview"></textarea>
+<textarea id="popularity" placeholder="Popularity & Expectations"></textarea>
+<textarea id="conclusion" placeholder="Conclusion"></textarea>
+
+<button onclick="generateHtml()">Generate HTML</button>
+<button onclick="copyHtml()">Copy HTML</button>
+<button onclick="downloadHtml()">Download HTML</button>
+<button onclick="clearForm()">Clear</button>
+</div>
+
+<div class="card">
+<textarea id="output" readonly></textarea>
+</div>
+</div>
+
+<script>
+function generateHtml(){
+const t=id('title'), img=id('image'), rd=id('release'), jp=id('jp'),
+g=id('genre'), st=id('studio'), s=id('status'),
+intro=id('intro'), story=id('story'),
+pop=id('popularity'), con=id('conclusion');
+
+const html=`<div style="color:#111111;font-family:Arial,sans-serif;line-height:1.7;margin:auto;max-width:1100px;">
+
+<div style="background:#fff;border-radius:24px;box-shadow:0 8px 30px rgba(0,0,0,.08);padding:24px;margin-bottom:24px;">
+<h1 style="font-size:42px;">${t}</h1>
+<div style="display:flex;gap:22px;flex-wrap:wrap;">
+<img src="${img}" style="width:320px;border-radius:18px;">
+<div style="flex:1;min-width:280px;">
+<p>${intro}</p>
+</div>
+</div>
+</div>
+
+<div style="background:#fff;border-radius:22px;box-shadow:0 6px 24px rgba(0,0,0,.06);padding:24px;margin-bottom:24px;">
+<h2>Quick Information</h2>
+<table style="width:100%;border-collapse:collapse;">
+<tr><td><b>Japanese Title</b></td><td>${jp}</td></tr>
+<tr><td><b>Genre</b></td><td>${g}</td></tr>
+<tr><td><b>Studio</b></td><td>${st}</td></tr>
+<tr><td><b>Release Date</b></td><td>${rd}</td></tr>
+<tr><td><b>Status</b></td><td>${s}</td></tr>
+</table>
+</div>
+
+<div style="background:#fff;border-radius:22px;box-shadow:0 6px 24px rgba(0,0,0,.06);padding:24px;margin-bottom:24px;">
+<h2>Story Overview</h2>
+<p>${story}</p>
+</div>
+
+<div style="background:#fff;border-radius:22px;box-shadow:0 6px 24px rgba(0,0,0,.06);padding:24px;margin-bottom:24px;">
+<h2>Popularity & Expectations</h2>
+<p>${pop}</p>
+</div>
+
+<div style="background:#fff;border-radius:22px;box-shadow:0 6px 24px rgba(0,0,0,.06);padding:24px;">
+<h2>Conclusion</h2>
+<p>${con}</p>
+</div>
+
+</div>`;
+
+document.getElementById('output').value=html;
+}
+function id(x){return document.getElementById(x).value;}
+function copyHtml(){navigator.clipboard.writeText(document.getElementById('output').value);}
+function downloadHtml(){
+const blob=new Blob([document.getElementById('output').value],{type:'text/html'});
+const a=document.createElement('a');
+a.href=URL.createObjectURL(blob);
+a.download='blogger_post.html';
+a.click();
+}
+function clearForm(){document.querySelectorAll('input,textarea').forEach(e=>e.value='');}
+</script>
+</body>
+</html>
